@@ -1,6 +1,6 @@
 # Author Fakhir Khan
 
-from ConfigParser.ConfigParser import ConfigParser
+from dict_config_parser import ConfigParser
 
 
 def test():
@@ -9,7 +9,7 @@ def test():
                       'RESULT': ['RESULT_FOLDER_PATH', 'DATASET_TRAIN_CSV', 'DATASET_TEST_CSV']}
     input_params = {'config_file': 'config.ini',
                     'get_new_config': True,
-                    'default_values': default_values}
+                    'default_keys': default_values}
     config = ConfigParser(input_parameters=input_params)
     config.create_config()
     config_after_reading = config.read_config()
