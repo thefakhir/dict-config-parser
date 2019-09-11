@@ -1,4 +1,4 @@
-# ConfigParser
+### ConfigParser
 A custom wrapper for , written for python's own configparser, for reading and writing ini files, using simple dictionaries.
 
 ##### Input arguments:
@@ -21,26 +21,29 @@ As the name suggest, you can input the file name
   
   A sample default keys might look this.
   
-  >default_keys = {'DATASET_PATH' : ['VOC' , 'COCO'],
-                    'MODEL_PATH' : ['WEIGHTS', 'JSON']}'
+    default_keys = {'DATASET_PATH' : ['VOC' , 'COCO'],
+                    'MODEL_PATH'   : ['WEIGHTS', 'JSON']}'
 
 ##### Usage:
 
 After passing the required input parameters, you would need to run create_config method from the object created. 
 This would create the required prompts on the command line and you can enter the values as needed.
- > config = ConfigParser(input_parameters)
- > config.create_config()
+
+    config = ConfigParser(input_parameters)'
+    config.create_config()
+
 
 After creating the file, you would need to run the run_config method, from the current object of the class, to read the values 
 from the created config file and return the values in a two-tiered dictionary.
- > config_dictionary = config.read_config()
+
+    config_dictionary = config.read_config()
 
 The dictionary would have sections names, as its first tier keys and section key, as its second tier keys.
  
 For example, if you passed the example default keys, you could get the value against 'JSON' key in the 'MODEL_PATH' section,
 by the command 
  
->required_value = config_dictionary['MODEL_PATH']['JSON']
+    required_value = config_dictionary['MODEL_PATH']['JSON']
 
 
 TODO:
