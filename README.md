@@ -21,15 +21,22 @@ As the name suggest, you can input the file name
   
   A sample default keys might look this.
   
-    default_keys = {'DATASET_PATH' : ['VOC' , 'COCO'],
-                    'MODEL_PATH'   : ['WEIGHTS', 'JSON']}'
+    keys = {'DATASET_PATH' : ['VOC' , 'COCO'],
+            'MODEL_PATH'   : ['WEIGHTS', 'JSON']}'
 
+The complete input parameters could look like this:
+
+    input_parameters = {'config_file' : 'config.ini',
+                        'get_new_config' : True,
+                        'default_keys' : keys}
+                        
+                        
 ##### Usage:
 
 After passing the required input parameters, you would need to run create_config method from the object created. 
 This would create the required prompts on the command line and you can enter the values as needed.
 
-    config = ConfigParser(input_parameters)'
+    config = ConfigParser(input_parameters)
     config.create_config()
 
 
