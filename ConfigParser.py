@@ -1,34 +1,33 @@
-#  Copyright (c) 2019.
-#  @author Fakhir Khan
-#  @part of Vision Classifier for SlashNext
+#  Author Fakhir Khan
+
 import configparser
 import os
 
 
 class ConfigParser:
     def __init__(self, input_parameters):
-        if 'config_file_name' in input_parameters:
-            self.config_file_name = input_parameters['config_file_name']
+        if 'config_file' in input_parameters:
+            self.config_file = input_parameters['config_file']
         else:
-            self.config_file_name = 'validation_dataset_config.ini'
+            self.config_file = 'config.ini'
 
-        if 'get_config' in input_parameters:
-            self.get_new_config = input_parameters['get_config']
+        if 'get_new_config' in input_parameters:
+            self.get_new_config = input_parameters['get_new_config']
         else:
             self.get_new_config = False
 
-        assert 'default_values' in input_parameters, 'Values were not given'
-        #  This should be a dictionary of dictionaries where first level keys should be the section names and second level keys should be the default keys of the respective section
+        assert 'default_keys' in input_parameters, 'Values were not given'
+        # This should be a dictionary of dictionaries where first level keys should be the section names and second
+        # level keys should be the default keys of the respective section
         self.default_values_in_sections = input_parameters['default_values']
-        # Example of default values is
-        # default_values = {'Datasets' : ['RNET', 'DNET'] ,
-        #                   'Model': ['MODEL_PATH'],
-        #                   'RESULT' : ['FOLDER_PATH', 'DATASET_TRAIN_CSV', 'DATASET_TEST_CSV', 'PREVIOUSLY_VALIDATED_CSV']
+        # Example of default values is default_values = {'Datasets' : ['RNET', 'DNET'] , 'Model': ['MODEL_PATH'],
+        # 'RESULT' : ['FOLDER_PATH', 'DATASET_TRAIN_CSV', 'DATASET_TEST_CSV', 'PREVIOUSLY_VALIDATED_CSV']
         self.section_names = self.default_values_in_sections.keys()
 
         self.default_string_value = 'None'
 
     def create_config(self):
+
         dataset_config = configparser.ConfigParser()
         for section in self.section_names:
             dataset_config.add_section(section)
@@ -37,14 +36,14 @@ class ConfigParser:
                 _new_value = self.__read_config_and_update(section_name=section, key=_section_key)
                 dataset_config.set(section, _section_key, _new_value)
 
-        with open(self.config_file_name, 'w') as _config_file:
+        with open(self.config_file, 'w') as _config_file:
             dataset_config.write(_config_file)
 
     def __read_config_and_update(self, section_name, key):
-        if os.path.isfile(self.config_file_name):
+        if os.path.isfile(self.config_file):
             try:
                 dataset_config = configparser.ConfigParser()
-                dataset_config.read(self.config_file_name)
+                dataset_config.read(self.config_file)
                 previous_value = dataset_config[section_name][key]
             except KeyError:
                 previous_value = self.default_string_value
@@ -72,7 +71,7 @@ class ConfigParser:
 
     def read_config(self):
         dataset_config = configparser.ConfigParser()
-        dataset_config.read(self.config_file_name)
+        dataset_config.read(self.config_file)
         _config = dict()
 
         for section_name in self.section_names:
@@ -85,19 +84,3 @@ class ConfigParser:
 
         return _config
 
-
-def test():
-    default_values = {'Datasets': ['RNET', 'DNET'],
-                      'Model': ['MODEL_PATH'],
-                      'RESULT': ['RESULT_FOLDER_PATH', 'DATASET_TRAIN_CSV', 'DATASET_TEST_CSV', 'PREVIOUSLY_VALIDATED_CSV']}
-    input_params = {'config_file_name': 'config.ini',
-                    'get_config': True,
-                    'default_values': default_values}
-    config = ConfigParser(input_parameters=input_params)
-    config.create_config()
-    config_after_reading = config.read_config()
-    print(config_after_reading)
-
-
-if __name__ == '__main__':
-    test()
