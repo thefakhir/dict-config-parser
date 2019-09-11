@@ -14,6 +14,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/thefakhir/dict-config-parser',
+    download_url='https://github.com/thefakhir/dict-config-parser/archive/v1.0.tar.gz',
     author='M Fakhir Khan',
     author_email='thefakhir@gmail.com',
     keywords='config parser configparser',

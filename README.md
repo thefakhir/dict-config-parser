@@ -1,6 +1,10 @@
 ### ConfigParser
 A custom wrapper, written for python's own configparser, for reading and writing ini files, using simple dictionaries.
 
+Can be installed using the setup.py file and by using the pip module
+
+    pip install dict-config-parser
+
 ##### Input arguments:
 
 
