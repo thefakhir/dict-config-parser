@@ -10,13 +10,10 @@ Can be installed using the setup.py file and by using the pip module
 
 * config_file
 
-As the name suggest, you can input the file name
- of the file, including the ini extension. 
- You can also pass the path of the config file in this
-  parameter.
+As the name suggest, you can input the file name of the file, including the ini extension. 
+You can also pass the path of the config file in this parameter.
   
   * get_new_config
-  
   This is a boolean flag, when True, the code would ask for a new config and overwrite the previous one.
   
   * default_keys
@@ -28,20 +25,13 @@ As the name suggest, you can input the file name
     keys = {'DATASET_PATH' : ['VOC' , 'COCO'],
             'MODEL_PATH'   : ['WEIGHTS', 'JSON']}'
 
-The complete input parameters could look like this:
-
-    input_parameters = {'config_file' : 'config.ini',
-                        'get_new_config' : True,
-                        'default_keys' : keys}
-                        
                         
 ##### Usage:
 
-After passing the required input parameters, you would need to run create_config method from the object created. 
+You only have to pass through the input parameters and it would create a new file, if it doesn't already exist. 
 This would create the required prompts on the command line and you can enter the values as needed.
 
-    config = ConfigParser(input_parameters)
-    config.create_config()
+    config = ConfigParser(config_file='config.ini', get_new_config=True, default_keys=keys)
 
 
 After creating the file, you would need to run the run_config method, from the current object of the class, to read the values 
@@ -55,8 +45,3 @@ For example, if you passed the example default keys, you could get the value aga
 by the command 
  
     required_value = config_dictionary['MODEL_PATH']['JSON']
-
-
-TODO:
-
-- [] Add support to change subset of values  

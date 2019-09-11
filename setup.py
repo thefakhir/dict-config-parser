@@ -8,13 +8,13 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='dict-config-parser',
-    version='v1.0',
+    name='dict_config_parser',
+    version='1.0',
     description='A custom wrapper, written in python, for reading and writing ini files, using simple dictionaries.',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/thefakhir/dict-config-parser',
-    download_url='https://github.com/thefakhir/dict-config-parser/archive/v1.0.tar.gz',
+    url='https://github.com/thefakhir/dict_config_parser.git',
+    download_url='https://github.com/thefakhir/dict_config_parser/archive/v1.0.tar.gz',
     author='M Fakhir Khan',
     author_email='thefakhir@gmail.com',
     keywords='config parser configparser',
