@@ -1,5 +1,5 @@
 ### ConfigParser
-A custom wrapper for , written for python's own configparser, for reading and writing ini files, using simple dictionaries.
+A custom wrapper, written for python's own configparser, for reading and writing ini files, using simple dictionaries.
 
 ##### Input arguments:
 
