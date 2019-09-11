@@ -1,6 +1,6 @@
 # Author Fakhir Khan
 
-from ConfigParser import ConfigParser
+from ConfigParser.ConfigParser import ConfigParser
 
 
 def test():
